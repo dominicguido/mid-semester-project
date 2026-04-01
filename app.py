@@ -36,14 +36,14 @@ users1 = [
 
 inventory = [
     {
-        'id': 'ITEM1',
+        'id': '1',
         'name': 'Notebook',
         'description': 'College ruled notebooks',
         'stock': 50,
         'category': 'Office Supplies'
     },
     {
-        'id': 'ITEM2',
+        'id': '2',
         'name': 'Pens',
         'description': 'Blue ink pens pack',
         'stock': 100,
@@ -65,8 +65,8 @@ if json_path.exists():
     with open(json_path, "r") as f:
         users1 = json.load(f)
 
-if st.session_state['role'] == 'Owner':
-    st.markdown('This is the Owner UI - Dashboard')
+if st.session_state['role'] == 'Employee':
+    st.markdown('This is the Employee UI - Dashboard')
 
     if st.button('Log Out'):
         with st.spinner('Logging Out'):
@@ -78,7 +78,7 @@ if st.session_state['role'] == 'Owner':
 
 
 
-elif st.session_state['role'] == 'Employee':
+elif st.session_state['role'] == 'Owner':
     if st.session_state["page"] == "home":
         st.markdown(f"Welcome {st.session_state['user']['email']}")
         if st.button('Go to Dashboard', type='primary', key='view_dash_btn'):

@@ -1,0 +1,15 @@
+[
+    {
+        "id": "1",
+        "email": "owner@business.com",
+        "full_name": "Business Owner",
+        "password": "123",
+        "role": "Owner"
+    },
+    {
+        "id": "10563d22-ad85-4cec-9a8f-0add3ea85930",
+        "email": "employee@business.com",
+        "password": "456",
+        "role": "Employee"
+    }
+]

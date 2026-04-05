@@ -86,7 +86,7 @@ elif st.session_state['role'] == 'Owner':
             st.rerun()
 
     elif st.session_state["page"] == 'dashboard':
-        tab1, tab2, tab3 = st.tabs(['View Inventory', 'Add New Item', 'Update an Item'])
+        tab1, tab2, tab3, tab4 = st.tabs(['View Inventory', 'Add New Item', 'Update an Item', 'Delete an Item'])
 
         with tab1:
             tab_option = st.radio('View/Search', ['View', 'Search'], horizontal=True)
@@ -212,6 +212,50 @@ elif st.session_state['role'] == 'Owner':
                     st.success('Inventory item updated!')
                     time.sleep(3)
                     st.rerun()
+
+        with tab4:
+    
+            st.markdown("# Delete an Inventory Item")
+
+            if not inventory:
+                st.warning("No inventory items to delete.")
+            else:
+                delete_names = []
+
+                for item in inventory:
+                    delete_names.append(item["name"])
+
+                selected_delete_name = st.selectbox(
+                    "Select item to delete",
+                    delete_names,
+                    key="delete_item_select"
+                )
+
+                delete_btn = st.button(
+                    "Delete Item",
+                    type="primary",
+                    use_container_width=True
+                )
+
+                if delete_btn:
+                    with st.spinner("Deleting item..."):
+                        time.sleep(2)
+
+                        new_inventory = []
+
+                        for item in inventory:
+                            if item["name"] != selected_delete_name:
+                                new_inventory.append(item)
+
+                        inventory = new_inventory
+
+                        with json_path_inventory.open("w", encoding="utf-8") as f:
+                            json.dump(inventory, f, indent=4)
+
+                        st.success(f"{selected_delete_name} deleted successfully!")
+                        time.sleep(2)
+                        st.rerun()
+
 
 else:
     st.subheader("Log In")

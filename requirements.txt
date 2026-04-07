@@ -1,1 +1,1 @@
-install streamlit
+streamlit

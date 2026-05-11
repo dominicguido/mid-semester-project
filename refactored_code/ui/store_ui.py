@@ -65,7 +65,7 @@ class StoreUI:
         email_input = st.text_input("Email", key='login_email')
         password_input = st.text_input("Password", type="password", key='login_password')
 
-        if st.button("Log In", use_container_width=True, type='primary'):
+        if st.button("Log In", use_container_width=True, type='primary', key='login_button'):
             with st.spinner("Logging in..."):
                 time.sleep(2)
                 user = self.service.login(email_input, password_input)
@@ -80,7 +80,7 @@ class StoreUI:
         new_email = st.text_input("Email Address", key='reg_email')
         new_password = st.text_input("Password", type="password", key='reg_password')
 
-        if st.button("Create Account", use_container_width=True, type='primary'):
+        if st.button("Create Account", use_container_width=True, type='primary', key='register_button'):
             with st.spinner("Creating account..."):
                 time.sleep(2)
                 st.success("Account created")
@@ -133,7 +133,7 @@ class StoreUI:
 
                 quantity_sold = st.number_input("Quantity sold", value=1, step=1)
 
-                if st.button("Log Sale", use_container_width=True, type='primary'):
+                if st.button("Log Sale", use_container_width=True, type='primary', key='log_sale_button'):
                     with st.spinner("Logging sale..."):
                         time.sleep(2)
                         
@@ -172,7 +172,7 @@ class StoreUI:
             stock = st.number_input("Stock Quantity")
             price = st.number_input("Price")
 
-            if st.button("Save Product", use_container_width=True, type='primary'):
+            if st.button("Save Product", use_container_width=True, type='primary', key='save_product_button'):
                 with st.spinner("Saving product..."):
                     time.sleep(2)
                     self.service.add_product(name, description, stock, price)
@@ -193,7 +193,7 @@ class StoreUI:
             new_price = st.number_input("Update Price")
             new_stock = st.number_input("Restock Quantity")
 
-            if st.button("Update Product",  use_container_width=True, type='primary'):
+            if st.button("Update Product",  use_container_width=True, type='primary', key='update_product_button'):
                 with st.spinner("Updating product..."):
                     time.sleep(2)
                     self.service.update_product(selected_product, new_price, new_stock)
@@ -213,7 +213,7 @@ class StoreUI:
 
                 selected_product = st.selectbox("Select product to delete", product_names)
 
-                if st.button("Delete Product",  use_container_width=True, type='primary'):
+                if st.button("Delete Product",  use_container_width=True, type='primary', key='delete_product_button'):
                     with st.spinner("Deleting product..."):
                         time.sleep(2)
                     self.service.delete_product(selected_product)

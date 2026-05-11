@@ -64,10 +64,6 @@ else:
 
         st.rerun()
 
-    st.markdown("### Test Logins")
-    st.markdown(
-    'Owner Login: Email: owner@business.com, Password: 123')
     
-    st.markdown('Employee Login: Email: employee@business.com, Password: 456')
 
 

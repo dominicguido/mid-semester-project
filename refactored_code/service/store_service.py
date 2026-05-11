@@ -85,6 +85,8 @@ class StoreService:
         )
 
     def ask_ai(self, messages):
+        
+        inventory = self.data.load_inventory()
 
         system_prompt = {
             "role": "system",

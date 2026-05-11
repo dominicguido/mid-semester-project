@@ -1,7 +1,8 @@
 import streamlit as st
 from pathlib import Path
 import time
-
+from dotenv import load_dotenv
+load_dotenv()
 
 from data.store_data import StoreData
 from service.store_service import StoreService

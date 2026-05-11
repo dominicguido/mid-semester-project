@@ -204,3 +204,5 @@ if st.session_state['logged_in'] == True:
                         st.rerun()
                 else:
                     st.warning("No products to delete")
+
+                    

@@ -11,7 +11,7 @@ class StoreService:
         self.data = data_layer
         self.users = self.data.load_users()
         self.inventory = self.data.load_inventory()
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.client = None
 
     def all_users(self) -> List[Dict]:
         return list(self.users)

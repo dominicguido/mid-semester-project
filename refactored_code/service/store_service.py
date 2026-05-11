@@ -87,20 +87,28 @@ class StoreService:
         )
 
     def ask_ai(self, messages):
-        
+
         inventory = self.data.load_inventory()
+
+        inventory_text = "\n".join([
+            f"{item['name']} | stock: {item['stock']} | price: ${item['price']}"
+            for item in inventory
+        ])
 
         system_prompt = {
             "role": "system",
-            "content": self.build_prompt()
+            "content": (
+                self.build_prompt() +
+                f"\n\nCURRENT INVENTORY:\n{inventory_text}"
+            )
         }
 
-        full_messages = messages + [system_prompt]
+        full_messages = [system_prompt] + messages
 
         response = self.client.chat.completions.create(
             model="gpt-5-mini",
             messages=full_messages,
-            temperature=1
+            temperature=0.3
         )
 
         return response.choices[0].message.content

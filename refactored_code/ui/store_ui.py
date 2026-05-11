@@ -25,26 +25,82 @@ class StoreUI:
         }
 
         .info-card {
-            background: linear-gradient(135deg, #ffffff, #f3f4f6);
-            color: #111827;
-            padding: 1.4rem;
-            border-radius: 18px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #151c28, #1f2937);
+            padding: 1.6rem;
+            border-radius: 22px;
             margin-bottom: 1.3rem;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.35),
+                inset 0 1px 1px rgba(255,255,255,0.04);
+            transition: 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 16px 40px rgba(0,0,0,0.45),
+                0 0 25px rgba(124, 58, 237, 0.18);
+        }
+
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(
+                circle,
+                rgba(124,58,237,0.35),
+                transparent 70%
+            );
+        }
+
+        .info-card::after {
+            content: "";
+            position: absolute;
+            bottom: -40px;
+            left: -40px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(
+                circle,
+                rgba(37,99,235,0.25),
+                transparent 70%
+            );
         }
 
         .info-card h3 {
-            color: #111827 !important;
-            margin-bottom: 0.25rem;
+            color: white !important;
+            margin-bottom: 0.45rem;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
         }
 
         .info-card p {
-            color: #1f2937 !important;
+            color: #cbd5e1 !important;
             margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-card:first-child {
+            border-left: 4px solid #8b5cf6;
+        }
+
+        .info-card:last-child {
+            border-left: 4px solid #2563eb;
         }
 
         .product-card {
-            background: #121820;
+            background: linear-gradient(145deg, #151c28, #1a2233);
             padding: 1.2rem;
             border-radius: 16px;
             border: 1px solid #252c37;
@@ -59,6 +115,24 @@ class StoreUI:
         .good-stock {
             color: #51cf66;
             font-weight: bold;
+        }
+                    
+        .info-card:first-child {
+            border-left: 6px solid #3b82f6;
+        }
+
+        .info-card:last-child {
+            border-left: 6px solid #22c55e;
+        }
+
+        .stTabs [data-baseweb="tab"] {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #d1d5db;
+        }
+
+        .stTabs [aria-selected="true"] {
+            color: #8b5cf6 !important;
         }
 
         div[data-testid="stTextInput"] input,
@@ -84,15 +158,23 @@ class StoreUI:
         }
 
         .stButton > button[kind="primary"] {
-            background-color: #ff4b4b;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            color: white;
             border: none;
+            transition: 0.3s;
+        }
+
+        .stButton > button[kind="primary"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
         }
 
         [data-testid="stMetric"] {
-            background: #121820;
+            background: linear-gradient(145deg, #151c28, #1b2332);
             padding: 1rem;
-            border-radius: 14px;
-            border: 1px solid #252c37;
+            border-radius: 16px;
+            border: 1px solid #2d3748;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
         }
         </style>
         """, unsafe_allow_html=True)

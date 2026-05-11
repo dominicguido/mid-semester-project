@@ -106,7 +106,7 @@ class StoreService:
         full_messages = [system_prompt] + messages
 
         response = self.client.chat.completions.create(
-            model="gpt-5-mini",
+            model="gpt-5",
             messages=full_messages,
             temperature=0.3
         )

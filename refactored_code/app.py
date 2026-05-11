@@ -65,8 +65,8 @@ else:
         st.rerun()
 
     st.markdown(
-    'Owner Login: owner@business.com, 123' \
-    'Employee Login: employee@business.com, 456'
-)
+    'Owner Login: owner@business.com, 123')
+    
+    st.markdown('Employee Login: employee@business.com, 456')
 
 

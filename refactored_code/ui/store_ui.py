@@ -486,6 +486,7 @@ class StoreUI:
             self.ai_assistant()
 
     def ai_assistant(self):
+
         st.subheader("AI Inventory Assistant")
 
         if "messages" not in st.session_state:
@@ -496,30 +497,25 @@ class StoreUI:
                 }
             ]
 
-        with st.container(height=300, border=True):
-            for message in st.session_state["messages"]:
-                with st.chat_message(message["role"]):
-                    st.markdown(message["content"])
-
-            user_input = st.chat_input("Ask a question...")
+        user_input = st.chat_input("Ask a question...")
 
         if user_input:
+
             st.session_state["messages"].append({
                 "role": "user",
                 "content": user_input
             })
 
-            with st.chat_message("user"):
-                st.markdown(user_input)
-
-            with st.chat_message("assistant"):
-                with st.spinner("Thinking..."):
-                    time.sleep(1)
-                    response = self.service.ask_ai(st.session_state["messages"])
-
-                st.markdown(response)
+            response = self.service.ask_ai(st.session_state["messages"])
 
             st.session_state["messages"].append({
                 "role": "assistant",
                 "content": response
             })
+
+        with st.container(height=300, border=True):
+
+            for message in st.session_state["messages"]:
+
+                with st.chat_message(message["role"]):
+                    st.markdown(message["content"])

@@ -501,7 +501,7 @@ class StoreUI:
                 with st.chat_message(message["role"]):
                     st.markdown(message["content"])
 
-        user_input = st.chat_input("Ask a question...")
+            user_input = st.chat_input("Ask a question...")
 
         if user_input:
             st.session_state["messages"].append({
